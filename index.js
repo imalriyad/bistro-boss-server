@@ -10,7 +10,15 @@ const port = process.env.PORT || 5000;
 
 // MiddleWare
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://bistrobosss.netlify.app",
+    ],
+    credentials: true,
+  })
+);
 
 // varifyToken
 const varifyToken = (req, res, next) => {
